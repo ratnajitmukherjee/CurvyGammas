@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="PowerCurve.jpeg="350"/>  
-</p>
+![PowerCurve](PowerCurve.jpeg)
 
 # CurvyGammas
 This is a demo project showing the effect of Gamma Curves on Images
