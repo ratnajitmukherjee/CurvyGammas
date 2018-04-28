@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="PowerCurve.jpg="350"/>  
+  <img src="PowerCurve.jpeg="350"/>  
 </p>
 
 # CurvyGammas
