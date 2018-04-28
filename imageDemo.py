@@ -27,15 +27,13 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
-
 import numpy as np
 
 
-class LinearNonLinearOperation:
-    def __init__(self):
-        print("Image Operation class called")
+class LinearNonLinearOperation(object):
 
-    def srgb2lin(self, img, gpower):
+    @staticmethod
+    def srgb2lin(img, gpower):
         """
         :param img: the image passed by the user
         :param gpower: the power passed by the main function
@@ -60,7 +58,8 @@ class LinearNonLinearOperation:
 
         return img_lin
 
-    def lin2srgb(self, img, gpower):
+    @staticmethod
+    def lin2srgb(img, gpower):
         """
         :param img: the image passed by the user
         :param gpower: the power passed by the main function

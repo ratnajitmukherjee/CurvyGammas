@@ -28,7 +28,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-from imageDemo import LinearNonLinearOperation
+from imageDemo import LinearNonLinearOperation as imgop
 from matplotlib.gridspec import GridSpec
 import matplotlib.pyplot as plt
 import numpy as np
@@ -41,6 +41,13 @@ class GammaCurveDemo:
         print("THIS IS A GAMMA CURVE DEMO USING NUMPY AND MATPLOTLIB")
 
     def drawGammaCurve(self):
+        """
+        Function to plot standard Gamma curves (forward and backward) for g = 2.2, 2.4 and 2.6 respectively
+         2.2 = bright light
+         2.4 = ambient lighting temp
+         2.6 = dark lighting conditions
+        :return: <none>
+        """
         x_space = np.linspace(0.0, 1.0, 4096)
 
         plt.figure(1)
@@ -61,7 +68,6 @@ class GammaCurveDemo:
         return
 
     def drawImagePlot(self, fwdGammaArr, bwdGammaArr, input_image):
-
         fig = plt.figure(2)
         rows = 2
         columns = 4
@@ -86,7 +92,6 @@ class GammaCurveDemo:
         ax2.set_xlabel("Gamma = "+str(1/2.2))
         ax2.set_xticks([])
         ax2.set_yticks([])
-
 
         ax3 = plt.subplot(gs.new_subplotspec((0, 2), colspan=1))
         ax3.imshow(fwdGammaArr[:, :, :, 1])
@@ -118,15 +123,25 @@ class GammaCurveDemo:
         ax7.set_xticks([])
         ax7.set_yticks([])
 
-        fig.suptitle("Gamma Curve - Image Demo")
+        """
+        ***********************************************
+            Set plot title and show the images
+        ***********************************************
+        """
 
+        fig.suptitle("Gamma Curve - Image Demo")
         plt.show()
 
     def gammaCurveImageDemo(self, img_path):
-        img = imageio.imread(img_path)
+        """
+        Function to demonstrate the effects of 3 gamma curves with both forward and backward gamma correction
+        :param img_path: the path of the image to be processed
+        :return: the final subplots showing the original and gamma corrected images for comparison
 
-        # Call the image operation class
-        imgop = LinearNonLinearOperation()
+        NOTE: We demonstrate the use static methods imported from the class LinearNonLinearOperation allowing
+        function call without instantiating the class
+        """
+        img = imageio.imread(img_path)
 
         # First convert the image into a standard linear image
         img_lin_base = imgop.srgb2lin(img, gpower=2.4)
